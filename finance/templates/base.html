@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Finance App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Add your custom CSS links here -->
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'finance:home' %}">Personal Finance App</a>
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'finance:create_goal' %}">Create Goal</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'finance:get_goals' %}">Goals</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'finance:logout' %}">logout</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'finance:register' %}">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'finance:login' %}">Login</a></li>
+                        {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Add your custom JavaScript links here -->
+</body>
+</html>

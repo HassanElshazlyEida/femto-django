@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Saving Goals</h2>
+  {% if goals %}
+    <ul class="list-group">
+    {% for goal in goals %}
+      <li class="list-group-item">{{ goal.total_amount }} - {{ goal.goal_date }}</li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>No goals found.</p>
+  {% endif %}
+
+  <a class="btn btn-primary mt-5" href="{% url 'finance:create_goal' %}">Create New Goal</a>
+{% endblock %}
